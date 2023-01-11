@@ -1,6 +1,6 @@
-import getResturantsFromGoogleApi from '../services/google-maps-api.js'
+const { getResturantsFromGoogleApi } = require('../services/google-maps-api.js');
 
-export const getResturants = async (req, res) => {
+exports.getResturants = async (req, res) => {
     try {
         const usersReq = {
             category: req.body.category,

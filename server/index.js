@@ -1,8 +1,10 @@
-const express = require('express');
+import express from "express";
+import router from './router.js';
+
 const app = express();
-const router = require('./router.js');
 const port = 3001;
 const cors = require('cors')
+const axios = require('axios')
 
 
 app.use(cors())

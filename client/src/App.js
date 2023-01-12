@@ -5,6 +5,8 @@ import { GOOGLE_MAPS_API_KEY } from "./google-maps-api-key";
 import NavBar from "./components/nav-bar";
 import { ChakraProvider, Spinner } from "@chakra-ui/react";
 import theme from "./styles/theme";
+import { Route, Routes } from "react-router-dom";
+import ChoosingResturants from "./views/choosing-resturant-page";
 
 function App() {
   const { isLoaded } = useLoadScript({
@@ -17,8 +19,12 @@ function App() {
   return (
     <>
       <ChakraProvider theme={theme}>
-        <NavBar />
-        <Dashboard />
+      <NavBar />
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/resturants" element={<ChoosingResturants />} />
+
+        </Routes>
       </ChakraProvider>
     </>
   );

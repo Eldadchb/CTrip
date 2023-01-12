@@ -1,17 +1,10 @@
-import {
-  GoogleMap,
-  Circle,
-  Marker,
-  DirectionsRenderer,
-  MarkerClusterer,
-} from "@react-google-maps/api";
-import { useState, useMemo, useCallback, useRef } from "react";
 import Map from "../components/map";
+import SideBar from "../components/side-bar";
 
 function Dashboard() {
   return (
     <div className="container">
-      <div className="controlers"></div>
+      <SideBar />
       <Map />
     </div>
   );

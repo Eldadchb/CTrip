@@ -2,8 +2,9 @@ import "./App.css";
 import Dashboard from "./views/dashboard-page.js";
 import { useLoadScript } from "@react-google-maps/api";
 import { GOOGLE_MAPS_API_KEY } from "./google-maps-api-key";
-import ToolBar from "./components/tool-bar";
+import NavBar from "./components/nav-bar";
 import { ChakraProvider, Spinner } from "@chakra-ui/react";
+import theme from "./styles/theme";
 
 function App() {
   const { isLoaded } = useLoadScript({
@@ -15,8 +16,8 @@ function App() {
 
   return (
     <>
-      <ChakraProvider>
-        <ToolBar />
+      <ChakraProvider theme={theme}>
+        <NavBar />
         <Dashboard />
       </ChakraProvider>
     </>

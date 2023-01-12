@@ -1,3 +1,4 @@
+import { Box } from "@chakra-ui/react";
 import {
   GoogleMap,
   Circle,
@@ -11,13 +12,13 @@ function Map() {
   const center = useMemo(() => ({ lat: 52.52, lng: 13.405 }), []);
 
   return (
-    <div className="map">
+    <Box className="map">
       <GoogleMap
         zoom={10}
         center={center}
         mapContainerClassName={"map-container"}
       />
-    </div>
+    </Box>
   );
 }
 

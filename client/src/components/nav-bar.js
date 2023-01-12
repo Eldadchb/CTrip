@@ -5,17 +5,38 @@ function NavBar() {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Box className="tool-bar">
-      <Button
-        onClick={toggleColorMode}
-        colorScheme="green"
-        size="lg"
-        padding={2}
-        margin={4}
+    <>
+      <Box
+        className="nav-bar"
+        display="flex"
       >
-        {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-      </Button>
-    </Box>
+        <Box
+          className="app-title"
+          width="50%"
+          height="100%"
+          display="flex"
+          alignItems="center"
+          letterSpacing="wide"
+          fontSize="3xl"
+          paddingLeft="1%"
+        >
+          CTrip
+        </Box>
+        <Box
+          className="theme-mode-button"
+          width="50%"
+          height="100%"
+          display="flex"
+          alignItems='center'
+          justifyContent='flex-end'
+          paddingRight="1%"
+        >
+          <Button onClick={toggleColorMode} colorScheme="cyan" size="lg">
+            {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+          </Button>
+        </Box>
+      </Box>
+    </>
   );
 }
 export default NavBar;

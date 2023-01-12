@@ -6,8 +6,6 @@
 .controlers {
   width: 20%;
   padding: 1rem;
-  background: #48BB78;
-  color: white;
 }
 
 .map {
@@ -20,8 +18,7 @@
   height: 90vh;
 }
 
-.tool-bar {
+.nav-bar {
   width: 100%;
   height: 10vh;
-  background: #805AD5;
 }

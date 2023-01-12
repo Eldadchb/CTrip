@@ -1,7 +1,6 @@
-const { getResturants } = require('./controllers/places')
+const { getPlaces } = require('./controllers/places')
 const router = require('express').Router();
 
-router.get('/resturants', getResturants);
-// router.get('/attractions', getAttractions);
+router.get('/places', getPlaces);
 
 module.exports = router;

@@ -1,27 +1,17 @@
-const { getResturantsFromGoogleApi } = require('../services/google-maps-api.js');
+const { getPlacesFromGoogleApi } = require('../services/google-maps-api.js');
 
-exports.getResturants = async (req, res) => {
+exports.getPlaces = async (req, res) => {
     try {
         const usersReq = {
-            category: req.body.category,
-            neighborhood: req.body.neighborhood,
-            borough: req.body.borough,
-            city: req.body.city
+            location: req.body.location,
+            radius: req.body.radius,
+            type: req.body.type
         }
-        const dataReq = await getResturantsFromGoogleApi(usersReq.category, usersReq.neighborhood, usersReq.borough, usersReq.city);
+        const dataReq = await getPlacesFromGoogleApi(usersReq.location, usersReq.radius, usersReq.type);
         res.send(dataReq);
 
     } catch (error) {
         console.log('ERROR: ', error);
         res.sendStatus(500);
     }
-}
-
-// exports.getAttractions = async (req, res) => {
-//     try {
-        
-//     } catch (error) {
-//         console.log('ERROR: ', error);
-//         res.sendStatus(500);
-//     }
-// }
+};

@@ -1,4 +1,4 @@
-import { useColorMode, Button, Box } from "@chakra-ui/react";
+import { useColorMode, Button, Box, Divider } from "@chakra-ui/react";
 import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 
 function NavBar() {
@@ -6,10 +6,7 @@ function NavBar() {
 
   return (
     <>
-      <Box
-        className="nav-bar"
-        display="flex"
-      >
+      <Box className="nav-bar" display="flex">
         <Box
           className="app-title"
           width="50%"
@@ -27,8 +24,8 @@ function NavBar() {
           width="50%"
           height="100%"
           display="flex"
-          alignItems='center'
-          justifyContent='flex-end'
+          alignItems="center"
+          justifyContent="flex-end"
           paddingRight="1%"
         >
           <Button onClick={toggleColorMode} colorScheme="cyan" size="lg">

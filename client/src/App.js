@@ -3,7 +3,7 @@ import Dashboard from "./views/dashboard-page.js";
 import { useLoadScript } from "@react-google-maps/api";
 import { GOOGLE_MAPS_API_KEY } from "./google-maps-api-key";
 import NavBar from "./components/nav-bar";
-import { ChakraProvider, Spinner } from "@chakra-ui/react";
+import { ChakraProvider, Spinner, Divider } from "@chakra-ui/react";
 import theme from "./styles/theme";
 import { Route, Routes } from "react-router-dom";
 import ChoosingResturants from "./views/choosing-resturant-page";
@@ -19,11 +19,13 @@ function App() {
   return (
     <>
       <ChakraProvider theme={theme}>
-      <NavBar />
+        <NavBar />
+        <Divider borderWidth="1%"/>
+
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/resturants" element={<ChoosingResturants />} />
-
+          <Route path="/saved_trips" element={<ChoosingResturants />} /> 
         </Routes>
       </ChakraProvider>
     </>

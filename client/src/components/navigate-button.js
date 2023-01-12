@@ -1,11 +1,11 @@
 import { Button } from "@chakra-ui/react";
 
-function SideBarButton({ title, onClick }) {
+function NavigateButton({ title, onClick }) {
   return (
     <Button
       size="md"
-      height="15vh"
-      width="100%"
+      height="8vh"
+      width="8%"
       colorScheme="cyan"
       variant="solid"
       onClick={onClick}
@@ -14,4 +14,4 @@ function SideBarButton({ title, onClick }) {
     </Button>
   );
 }
-export default SideBarButton;
+export default NavigateButton;

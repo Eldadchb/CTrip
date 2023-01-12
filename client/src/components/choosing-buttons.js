@@ -1,16 +1,6 @@
 import { Button } from "@chakra-ui/react";
 
-function ChoosingButton({ title }) {
-  return (
-    <Button
-      size="md"
-      height="15vh"
-      width="100%"
-      colorScheme="cyan"
-      variant="solid"
-    >
-      {title}
-    </Button>
-  );
+function ChoosingButton({ title, width, height, borderRad, color }) {
+  return (<Button colorScheme={color} height={height} width={width} borderRadius={borderRad}>{title}</Button>)
 }
 export default ChoosingButton;

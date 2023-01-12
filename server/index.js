@@ -4,7 +4,6 @@ const router = require ('./router.js');
 const app = express();
 const port = 3001;
 const cors = require('cors')
-const axios = require('axios')
 
 
 app.use(cors())

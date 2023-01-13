@@ -13,12 +13,14 @@ import {
   Stack,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useRef } from "react";
-import { HamburgerIcon } from "@chakra-ui/icons"
+import { useRef, useState } from "react";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import AutoComplete from "./auto-complete-bar";
 
 function SideBar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
+  const [position, setPosition] = useState();
 
   const navigate = useNavigate();
   const navigateToResturantsPage = () => navigate("/resturants");
@@ -26,9 +28,15 @@ function SideBar() {
 
   return (
     <Box className="controlers">
-      <Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
+      <Button ref={btnRef} colorScheme="teal" onClick={onOpen} marginBottom="4">
         <HamburgerIcon />
       </Button>
+
+      <AutoComplete
+        position={(currPosition) => {
+          setPosition(currPosition);
+        }}
+      />
       <Drawer
         isOpen={isOpen}
         placement="left"

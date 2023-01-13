@@ -1,5 +1,6 @@
 import { useColorMode, Button, Box, Divider } from "@chakra-ui/react";
 import { SunIcon, MoonIcon } from "@chakra-ui/icons";
+import { useState } from "react";
 
 function NavBar() {
   const { colorMode, toggleColorMode } = useColorMode();

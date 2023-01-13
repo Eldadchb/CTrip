@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       <ChakraProvider theme={theme}>
-        <NavBar />
+        <NavBar />        
         <Divider borderWidth="1%" />
 
         <Routes>

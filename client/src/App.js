@@ -21,13 +21,13 @@ function App() {
     <>
       <ChakraProvider theme={theme}>
         <NavBar />
-        <Divider borderWidth="1%"/>
+        <Divider borderWidth="1%" />
 
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/resturants" element={<ChoosingResturants />} />
           <Route path="/attractions" element={<ChoosingAttractions />} />
-          <Route path="/saved_trips" element={<ChoosingResturants />} /> 
+          <Route path="/saved_trips" element={<ChoosingResturants />} />
         </Routes>
       </ChakraProvider>
     </>

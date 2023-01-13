@@ -4,19 +4,18 @@
 }
 
 .controlers {
-  width: 20%;
+  width: 6%;
   padding: 1rem;
 }
 
 .map {
-  width: 80%;
+  width: 94%;
   height: 90vh;
 }
 
 .map-container {
   width: 100%;
   height: 90vh;
-  border-top-left-radius: 2%;
 }
 
 .nav-bar {

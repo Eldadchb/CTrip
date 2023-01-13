@@ -7,6 +7,7 @@ import { ChakraProvider, Spinner, Divider } from "@chakra-ui/react";
 import theme from "./styles/theme";
 import { Route, Routes } from "react-router-dom";
 import ChoosingResturants from "./views/choosing-resturant-page";
+import ChoosingAttractions from "./views/choosing-attraction-page";
 
 function App() {
   const { isLoaded } = useLoadScript({
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/resturants" element={<ChoosingResturants />} />
+          <Route path="/attractions" element={<ChoosingAttractions />} />
           <Route path="/saved_trips" element={<ChoosingResturants />} /> 
         </Routes>
       </ChakraProvider>

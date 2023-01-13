@@ -12,8 +12,10 @@ import ChoosingButton from "../components/choosing-buttons";
 import NavigateButton from "../components/navigate-button";
 
 function ChoosingResturants() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const navigateToDashboardPage = () => navigate("/");
+  const navigateToChoosingAttractionsPage = () => navigate("/attractions");
+
 
   const resturantType = [
     "Asian",
@@ -25,6 +27,8 @@ function ChoosingResturants() {
     "Arabian",
     "Georgian",
     "Russian",
+    "Bakery",
+    "Burger"
   ];
   const colorOfButton = [
     "gray",
@@ -43,8 +47,8 @@ function ChoosingResturants() {
   resturantType.forEach((resturantName) => {
     let currentColor =
       colorOfButton[Math.round(Math.random() * (colorOfButton.length - 1))];
-    let currentWidth = '20%';
-    let currentHeight = '15vh';
+    let currentWidth = "20%";
+    let currentHeight = "15vh";
     let currentborderRad = Math.round(Math.random() * 100);
     buttonsList.push(
       <ChoosingButton
@@ -59,17 +63,34 @@ function ChoosingResturants() {
 
   return (
     <>
-      <Box width="100%" paddingTop="20" paddingLeft="70px" display="flex" justifyContent="center">
+      <Box
+        width="100%"
+        paddingTop="20"
+        paddingLeft="70px"
+        display="flex"
+        justifyContent="center"
+      >
         <Stack direction="row" justifyContent="center">
           <Wrap spacing={10}>{buttonsList}</Wrap>
         </Stack>
       </Box>
-      <Box paddingTop='10'  paddingLeft='10' paddingRight='10' display="flex" width="100%">
-        <NavigateButton onClick={navigateToDashboardPage} title={<ArrowLeftIcon />}/>
-        <NavigateButton onClick={navigateToDashboardPage} title={<ArrowRightIcon />} marginLeft={'85%'}/>
-
-        </Box>
-      
+      <Box
+        paddingTop="10"
+        paddingLeft="10"
+        paddingRight="10"
+        display="flex"
+        width="100%"
+      >
+        <NavigateButton
+          onClick={navigateToDashboardPage}
+          title={<ArrowLeftIcon />}
+        />
+        <NavigateButton
+          onClick={navigateToChoosingAttractionsPage}
+          title={<ArrowRightIcon />}
+          marginLeft={"85%"}
+        />
+      </Box>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { Button } from "@chakra-ui/react";
 
-function NavigateButton({ title, onClick }) {
+function NavigateButton({ title, onClick, marginLeft }) {
   return (
     <Button
       size="md"
@@ -8,6 +8,7 @@ function NavigateButton({ title, onClick }) {
       width="8%"
       colorScheme="cyan"
       variant="solid"
+      marginLeft={marginLeft}
       onClick={onClick}
     >
       {title}

@@ -6,10 +6,15 @@ import {
   Stack,
   WrapItem,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import ChoosingButton from "../components/choosing-buttons";
 import NavigateButton from "../components/navigate-button";
 
 function ChoosingResturants() {
+  const navigate = useNavigate()
+  const navigateToDashboardPage = () => navigate("/");
+
   const resturantType = [
     "Asian",
     "Israeli",
@@ -54,14 +59,17 @@ function ChoosingResturants() {
 
   return (
     <>
-      <Box width="100%" paddingTop="20" display="flex" justifyContent="center">
-        <Stack direction="column" justifyContent="center">
+      <Box width="100%" paddingTop="20" paddingLeft="70px" display="flex" justifyContent="center">
+        <Stack direction="row" justifyContent="center">
           <Wrap spacing={10}>{buttonsList}</Wrap>
         </Stack>
       </Box>
-      <Box paddingTop='10' paddingLeft='10' display="flex" justifyContent='left'>
-        <NavigateButton />
-      </Box>
+      <Box paddingTop='10'  paddingLeft='10' paddingRight='10' display="flex" width="100%">
+        <NavigateButton onClick={navigateToDashboardPage} title={<ArrowLeftIcon />}/>
+        <NavigateButton onClick={navigateToDashboardPage} title={<ArrowRightIcon />} marginLeft={'85%'}/>
+
+        </Box>
+      
     </>
   );
 }

@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+import SideBarButton from "./buttons";
 import {
   Drawer,
   DrawerBody,
@@ -12,16 +14,25 @@ import {
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import SavedTrips from "./saved-trips";
-import CreateNewTripMenu from "./create-new-trip-menu";
-function SideBar() {
+
+function SavedTrips() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
 
+  const navigate = useNavigate();
+  const navigateToResturantsPage = () => navigate("/resturants");
+  const navigateToSavedTripsPage = () => navigate("/saved_trips");
+
   return (
-    <Box className="side-bar">
-      <Button ref={btnRef} colorScheme="teal" onClick={onOpen} marginTop="4">
-        <HamburgerIcon />
+    <>
+      <Button
+        ref={btnRef}
+        colorScheme="teal"
+        onClick={onOpen}
+        marginTop="4"
+        width="100%"
+      >
+        Saved Trips
       </Button>
 
       <Drawer
@@ -33,19 +44,17 @@ function SideBar() {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader justifyContent="center" display="flex"></DrawerHeader>
+          <DrawerHeader justifyContent="center" display="flex">
+            404
+          </DrawerHeader>
 
           <DrawerBody>
-            <Stack direction="column" spacing={10} align="center">
-              <CreateNewTripMenu></CreateNewTripMenu>
-
-              <SavedTrips></SavedTrips>
-            </Stack>
+            <Stack direction="column" spacing={10} align="center"></Stack>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
-    </Box>
+    </>
   );
 }
 
-export default SideBar;
+export default SavedTrips;

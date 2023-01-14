@@ -4,9 +4,7 @@ import { useState } from "react";
 import AutoComplete from "./auto-complete-bar";
 
 function NavBar() {
-  const [position, setPosition] = useState();
   const { colorMode, toggleColorMode } = useColorMode();
-
 
   return (
     <>

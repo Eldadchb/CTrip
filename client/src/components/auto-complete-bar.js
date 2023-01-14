@@ -23,7 +23,6 @@ function AutoCompleteSearchBar({ setStartingPoint }) {
   } = usePlacesAutocomplete();
 
   const handleSelect = async (addressReq) => {
-    console.log(addressReq);
     setValue(addressReq, false);
     clearSuggestions();
 

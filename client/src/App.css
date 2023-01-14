@@ -1,3 +1,8 @@
+* {
+  font-family: 'Inter', sans-serif;
+  font-family: 'Lato', sans-serif;
+}
+
 .container {
   display: flex;
 }

@@ -20,7 +20,7 @@ import AutoComplete from "./auto-complete-bar";
 function SideBar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
-  const [position, setPosition] = useState();
+
 
   const navigate = useNavigate();
   const navigateToResturantsPage = () => navigate("/resturants");
@@ -31,12 +31,10 @@ function SideBar() {
       <Button ref={btnRef} colorScheme="teal" onClick={onOpen} marginBottom="4">
         <HamburgerIcon />
       </Button>
+      
+      <AutoComplete />
 
-      <AutoComplete
-        position={(currPosition) => {
-          setPosition(currPosition);
-        }}
-      />
+
       <Drawer
         isOpen={isOpen}
         placement="left"

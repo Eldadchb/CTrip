@@ -1,4 +1,4 @@
-import { Input, Box } from "@chakra-ui/react";
+import { Input, Box, Stack } from "@chakra-ui/react";
 import {
   Popover,
   PopoverTrigger,
@@ -14,16 +14,22 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from "use-places-autocomplete";
 
-function AutoComplete({ position }) {
+function AutoComplete() {
   const {
-    ready,
     value,
     setValue,
     suggestions: { status, data },
     clearSuggestions,
   } = usePlacesAutocomplete();
 
-  console.log(status, data);
+  const handleSelect = async (addressReq) => {
+    console.log(addressReq);
+    setValue(addressReq, false);
+    clearSuggestions();
+    const results = await getGeocode({ address: addressReq });
+    const { lat, lng } = await getLatLng(results[0]);
+    // return {lat, lng}
+  };
 
   return (
     <>
@@ -33,20 +39,29 @@ function AutoComplete({ position }) {
             <SearchIcon />
           </Button>
         </PopoverTrigger>
-        <PopoverContent>
+        <PopoverContent width={"500"} colorScheme="dark">
           <PopoverBody>
             <Box>
               <Input
+                width={500}
+                colorscheme="dark"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
                 placeholder={"Search"}
               />
             </Box>
-            <ul>
-              {data.map(({ place_id, description }) => (
-                <li>{description}</li>
+            <Stack>
+              {status === "OK" && data.map(({ place_id, description }) => (
+                <Button
+                  key={place_id}
+                  onClick={() => {
+                    handleSelect(description);
+                  }}
+                >
+                  {description}
+                </Button>
               ))}
-            </ul>
+            </Stack>
           </PopoverBody>
         </PopoverContent>
       </Popover>

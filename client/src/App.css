@@ -1,6 +1,5 @@
 .container {
   display: flex;
-  height: 90vh;
 }
 
 .controlers {
@@ -21,4 +20,11 @@
 .nav-bar {
   width: 100%;
   height: 9vh;
+}
+
+.combobox-input {
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  background-color: black;
 }

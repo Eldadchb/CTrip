@@ -6,7 +6,7 @@ function SideBarButton({ title, onClick }) {
       size="md"
       height="15vh"
       width="100%"
-      colorScheme="cyan"
+      colorScheme="teal"
       variant="solid"
       onClick={onClick}
     >

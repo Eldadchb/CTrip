@@ -1,9 +1,12 @@
 import { useColorMode, Button, Box, Divider } from "@chakra-ui/react";
 import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 import { useState } from "react";
+import AutoComplete from "./auto-complete-bar";
 
 function NavBar() {
+  const [position, setPosition] = useState();
   const { colorMode, toggleColorMode } = useColorMode();
+
 
   return (
     <>
@@ -20,6 +23,7 @@ function NavBar() {
         >
           CTrip
         </Box>
+
         <Box
           className="theme-mode-button"
           width="50%"
@@ -29,7 +33,7 @@ function NavBar() {
           justifyContent="flex-end"
           paddingRight="1%"
         >
-          <Button onClick={toggleColorMode} colorScheme="cyan" size="lg">
+          <Button onClick={toggleColorMode} colorScheme="teal" size="lg">
             {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
           </Button>
         </Box>

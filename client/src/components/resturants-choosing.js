@@ -1,9 +1,4 @@
-import { ButtonGroup, Wrap, WrapItem } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
-import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import ChoosingButton from "../components/choosing-buttons";
-import NavigateButton from "../components/navigate-button";
-import SideBarButton from "./buttons";
 import {
   Drawer,
   DrawerBody,
@@ -12,7 +7,7 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Button,
-  Box,
+  Wrap,
   Stack,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -20,6 +15,10 @@ import { useRef, useState } from "react";
 import ChoosingAttractions from "./attractions-choosing";
 
 function ChoosingResturants() {
+  const result = new Set();
+  const handleChoosing = (resType) => {
+    result.add(resType);
+  };
   const resturantType = [
     "Asian",
     "Israeli",
@@ -56,6 +55,9 @@ function ChoosingResturants() {
     buttonsList.push(
       <ChoosingButton
         key={resturantName}
+        onClick={() => {
+          handleChoosing(resturantName);
+        }}
         color={currentColor}
         height={currentHeight}
         width={currentWidth}

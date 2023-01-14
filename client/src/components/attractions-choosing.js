@@ -1,17 +1,11 @@
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Wrap,
-  Stack,
-  WrapItem,
-} from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
-import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
+import { Wrap } from "@chakra-ui/react";
 import ChoosingButton from "../components/choosing-buttons";
-import NavigateButton from "../components/navigate-button";
 
 function ChoosingAttractions() {
+  const result = new Set();
+  const handleChoosing = (atrrType) => {
+    result.add(atrrType);
+  };
   const attractionsType = [
     "Church",
     "Clothing store",
@@ -42,14 +36,17 @@ function ChoosingAttractions() {
   const buttonsList = [];
 
   attractionsType.forEach((attractionName) => {
-    let currentColor =
+    const currentColor =
       colorOfButton[Math.round(Math.random() * (colorOfButton.length - 1))];
-    let currentWidth = "100%";
-    let currentHeight = "10vh";
-    let currentborderRad = "5%";
+    const currentWidth = "100%";
+    const currentHeight = "10vh";
+    const currentborderRad = "5%";
     buttonsList.push(
       <ChoosingButton
         key={attractionName}
+        onClick={() => {
+          handleChoosing(attractionName);
+        }}
         color={currentColor}
         height={currentHeight}
         width={currentWidth}

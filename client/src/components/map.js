@@ -7,24 +7,37 @@ import {
   MarkerClusterer,
 } from "@react-google-maps/api";
 import { useState, useMemo, useCallback, useRef } from "react";
-import AutoComplete from "./auto-complete-bar";
+import AutoCompleteSearchBar from "./auto-complete-bar";
+import SideBar from "./side-bar";
 
 function Map() {
-  const center = useMemo(() => ({ lat: 52.52, lng: 13.405 }), []);
   const mapRef = useRef();
 
+  const center = useMemo(() => ({ lat: 52.52, lng: 13.405 }), []);
+  const initialFunc = useCallback((map) => (mapRef.current = map), []);
 
+  const [startingPoint, setStartingPoint] = useState();
 
   return (
     <>
-    <Box className="map">
+      <Box className="controlers">
+        <AutoCompleteSearchBar
+          setStartingPoint={(point) => {
+            setStartingPoint(point);
+            mapRef.current.panTo(point);
+          }}
+        />
+        <SideBar />
+      </Box>
 
-      <GoogleMap
-        zoom={10}
-        center={center}
-        mapContainerClassName={"map-container"}
-      />
-    </Box>
+      <Box className="map">
+        <GoogleMap
+          zoom={14}
+          center={center}
+          mapContainerClassName={"map-container"}
+          onLoad={initialFunc}
+        />
+      </Box>
     </>
   );
 }

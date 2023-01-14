@@ -3,7 +3,6 @@ import SideBarButton from "./buttons";
 import {
   Drawer,
   DrawerBody,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
@@ -15,25 +14,20 @@ import {
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import AutoComplete from "./auto-complete-bar";
 
 function SideBar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
-
 
   const navigate = useNavigate();
   const navigateToResturantsPage = () => navigate("/resturants");
   const navigateToSavedTripsPage = () => navigate("/saved_trips");
 
   return (
-    <Box className="controlers">
-      <Button ref={btnRef} colorScheme="teal" onClick={onOpen} marginBottom="4">
+    <Box className="side-bar">
+      <Button ref={btnRef} colorScheme="teal" onClick={onOpen} marginTop="4">
         <HamburgerIcon />
       </Button>
-      
-      <AutoComplete />
-
 
       <Drawer
         isOpen={isOpen}

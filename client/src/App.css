@@ -2,19 +2,17 @@
   display: flex;
 }
 
-.controlers {
-  width: 6%;
-  padding: 1rem;
-}
-
 .map {
   width: 94%;
   height: 90vh;
+
 }
 
 .map-container {
   width: 100%;
   height: 90vh;
+  border-radius: 5%;
+
 }
 
 .nav-bar {
@@ -22,9 +20,9 @@
   height: 9vh;
 }
 
-.combobox-input {
-  width: 100%;
-  height: 100%;
-  padding: 0.5rem;
-  background-color: black;
+.controlers {
+  width: 6%;
+  flex-direction: column;
+  padding-left: 18px;
+  padding-top: 1%;
 }

@@ -1,5 +1,6 @@
-import { Input, Box, Stack } from "@chakra-ui/react";
 import {
+  Input,
+  Stack,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -8,13 +9,12 @@ import {
 } from "@chakra-ui/react";
 
 import { SearchIcon } from "@chakra-ui/icons";
-import { useRef, useEffect } from "react";
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
 } from "use-places-autocomplete";
 
-function AutoComplete() {
+function AutoCompleteSearchBar({ setStartingPoint }) {
   const {
     value,
     setValue,
@@ -26,41 +26,40 @@ function AutoComplete() {
     console.log(addressReq);
     setValue(addressReq, false);
     clearSuggestions();
+
     const results = await getGeocode({ address: addressReq });
     const { lat, lng } = await getLatLng(results[0]);
-    // return {lat, lng}
+    setStartingPoint({ lat, lng });
   };
 
   return (
     <>
-      <Popover>
+      <Popover closeOnBlur={true}>
         <PopoverTrigger>
           <Button colorScheme="teal">
             <SearchIcon />
           </Button>
         </PopoverTrigger>
-        <PopoverContent width={"500"} colorScheme="dark">
+        <PopoverContent width={"500"}>
           <PopoverBody>
-            <Box>
-              <Input
-                width={500}
-                colorscheme="dark"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                placeholder={"Search"}
-              />
-            </Box>
+            <Input
+              width={500}
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              placeholder={"Search"}
+            />
             <Stack>
-              {status === "OK" && data.map(({ place_id, description }) => (
-                <Button
-                  key={place_id}
-                  onClick={() => {
-                    handleSelect(description);
-                  }}
-                >
-                  {description}
-                </Button>
-              ))}
+              {status === "OK" &&
+                data.map(({ place_id, description }) => (
+                  <Button
+                    key={place_id}
+                    onClick={() => {
+                      handleSelect(description);
+                    }}
+                  >
+                    {description}
+                  </Button>
+                ))}
             </Stack>
           </PopoverBody>
         </PopoverContent>
@@ -68,4 +67,4 @@ function AutoComplete() {
     </>
   );
 }
-export default AutoComplete;
+export default AutoCompleteSearchBar;

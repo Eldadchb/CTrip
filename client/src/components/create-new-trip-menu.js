@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import SideBarButton from "./buttons";
+import ChoosingButton from "./choosing-buttons";
 import {
   Drawer,
   DrawerBody,
@@ -21,15 +21,15 @@ function CreateNewTripMenu() {
 
   return (
     <>
-      <Button
-        ref={btnRef}
-        colorScheme="teal"
+      <ChoosingButton
+        key={"create-new-trip-button"}
+        color="teal"
         onClick={onOpen}
-        marginTop="4"
+        height={"10vh"}
         width="100%"
-      >
-        Create New Trip
-      </Button>
+        borderRad={"5%"}
+        title={"Create New Trip"}
+      />
 
       <Drawer
         isOpen={isOpen}

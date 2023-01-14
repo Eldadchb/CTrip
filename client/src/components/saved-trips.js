@@ -1,5 +1,4 @@
-import { useNavigate } from "react-router-dom";
-import SideBarButton from "./buttons";
+import ChoosingButton from "./choosing-buttons";
 import {
   Drawer,
   DrawerBody,
@@ -7,33 +6,26 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  Button,
-  Box,
   Stack,
   useDisclosure,
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
-import { HamburgerIcon } from "@chakra-ui/icons";
 
 function SavedTrips() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
 
-  const navigate = useNavigate();
-  const navigateToResturantsPage = () => navigate("/resturants");
-  const navigateToSavedTripsPage = () => navigate("/saved_trips");
-
   return (
     <>
-      <Button
-        ref={btnRef}
-        colorScheme="teal"
+      <ChoosingButton
+        key={"Saved-trips-button"}
+        color="teal"
         onClick={onOpen}
-        marginTop="4"
+        height={"10vh"}
         width="100%"
-      >
-        Saved Trips
-      </Button>
+        borderRad={"5%"}
+        title={"Saved Trip"}
+      />
 
       <Drawer
         isOpen={isOpen}

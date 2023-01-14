@@ -1,22 +1,21 @@
 import { Box } from "@chakra-ui/react";
-import {
-  GoogleMap,
-  Circle,
-  Marker,
-  DirectionsRenderer,
-  MarkerClusterer,
-} from "@react-google-maps/api";
+import { GoogleMap, Marker, DirectionsRenderer } from "@react-google-maps/api";
 import { useState, useMemo, useCallback, useRef } from "react";
 import AutoCompleteSearchBar from "./auto-complete-bar";
 import SideBar from "./side-bar";
 
 function Map() {
   const mapRef = useRef();
+  const [startingPoint, setStartingPoint] = useState();
 
   const center = useMemo(() => ({ lat: 52.52, lng: 13.405 }), []);
   const initialFunc = useCallback((map) => (mapRef.current = map), []);
-
-  const [startingPoint, setStartingPoint] = useState();
+  const onMapClick = (e) => {
+    let lat = e.latLng.lat();
+    let lng = e.latLng.lng();
+    const chosenPoint = { lat, lng };
+    setStartingPoint(chosenPoint);
+  };
 
   return (
     <>
@@ -36,7 +35,10 @@ function Map() {
           center={center}
           mapContainerClassName={"map-container"}
           onLoad={initialFunc}
-        />
+          onClick={onMapClick}
+        >
+          {startingPoint && <Marker position={startingPoint}></Marker>}
+        </GoogleMap>
       </Box>
     </>
   );

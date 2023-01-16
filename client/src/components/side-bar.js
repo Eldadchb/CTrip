@@ -14,9 +14,11 @@ import { useRef, useState } from "react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import SavedTrips from "./saved-trips";
 import CreateNewTripMenu from "./create-new-trip-menu";
+
 function SideBar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
+
 
   return (
     <Box className="side-bar">

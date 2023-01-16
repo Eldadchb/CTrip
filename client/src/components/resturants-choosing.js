@@ -11,14 +11,30 @@ import {
   Stack,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
 import ChoosingAttractions from "./attractions-choosing";
+import UserDataContext from "../usersData/userContext";
 
 function ChoosingResturants() {
+  const [resturants, setResturants] = useState()
+
   const result = new Set();
+  const userDataTemp = useContext(UserDataContext);
+
   const handleChoosing = (resType) => {
     result.add(resType);
   };
+
+  const handleSaveButton = () => {
+    setResturants(result);
+    saveFunction();
+  };
+
+  const saveFunction = () => {
+    userDataTemp['resturants'] = result;
+    console.log(userDataTemp);
+  }
+
   const resturantType = [
     "Asian",
     "Israeli",
@@ -75,10 +91,19 @@ function ChoosingResturants() {
       <Wrap spacing={5}>{buttonsList}</Wrap>
       <Button
         ref={btnRef}
+        colorScheme="green"
+        onClick={() => handleSaveButton()}
+        marginTop="4"
+        width="30%"
+      >
+        Save
+      </Button>
+      <Button
+        ref={btnRef}
         colorScheme="teal"
         onClick={onOpen}
         marginTop="4"
-        width="60%"
+        width="30%"
       >
         Next
       </Button>

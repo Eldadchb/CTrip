@@ -12,14 +12,30 @@ import {
   Stack,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
+import UserDataContext from "../usersData/userContext";
+
 
 function ChoosingAttractions() {
+  const [attractions, setAttractions] = useState()
+
   const result = new Set();
+  const userDataTemp = useContext(UserDataContext);
+
   const handleChoosing = (atrrType) => {
     result.add(atrrType);
-    console.log(result);
   };
+
+  const handleSaveButton = () => {
+    setAttractions(result);
+    saveFunction();
+  };
+
+  const saveFunction = () => {
+    userDataTemp['attractions'] = result;
+    console.log(userDataTemp);
+  }
+
   const attractionsType = [
     "Church",
     "Clothing store",
@@ -78,10 +94,19 @@ function ChoosingAttractions() {
       <Wrap spacing={5}>{buttonsList}</Wrap>
       <Button
         ref={btnRef}
+        colorScheme="green"
+        onClick={() => handleSaveButton()}
+        marginTop="4"
+        width="30%"
+      >
+        Save
+      </Button>
+      <Button
+        ref={btnRef}
         colorScheme="teal"
         onClick={onOpen}
         marginTop="4"
-        width="60%"
+        width="30%"
       >
         Next
       </Button>

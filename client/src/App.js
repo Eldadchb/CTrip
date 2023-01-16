@@ -1,10 +1,14 @@
 import "./App.css";
-import Dashboard from "./views/dashboard-page.js";
+import MainPage from "./views/main-page";
 import { useLoadScript } from "@react-google-maps/api";
 import { GOOGLE_MAPS_API_KEY } from "./google-maps-api-key";
+import { Spinner } from "@chakra-ui/react";
+import { Route, Routes } from 'react-router-dom';
+import { ChakraProvider, Divider } from "@chakra-ui/react";
+import theme from './styles/theme'
 import NavBar from "./components/nav-bar";
-import { ChakraProvider, Spinner, Divider, Box } from "@chakra-ui/react";
-import theme from "./styles/theme";
+import RoutePage from "./views/route-page";
+import UserDataContext from "./usersData/userContext";
 
 
 function App() {
@@ -12,17 +16,28 @@ function App() {
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
     libraries: ["places"],
   });
+  const USER_DATA_OBJ = {
+    'startingPoint': false,
+    'resturants': false,
+    'attractions': false,
+    'distance': false
+  };
 
-  if (!isLoaded) return <Spinner size={"200px"} />;
+  if (!isLoaded) return <Spinner size={"xl"} />;
 
   return (
     <>
       <ChakraProvider theme={theme}>
-        <NavBar />
-        <Divider borderWidth="1%" />
-
-        <Dashboard />
+        <UserDataContext.Provider value={USER_DATA_OBJ}>
+          <NavBar />
+          <Divider borderWidth="1%" />
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/route" element={<RoutePage />} />
+          </Routes>
+        </UserDataContext.Provider>
       </ChakraProvider>
+
     </>
   );
 }

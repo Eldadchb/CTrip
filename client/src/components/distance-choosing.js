@@ -6,18 +6,36 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+
+import UserDataContext from "../usersData/userContext";
+import ConfirmAlert from "./confirm-prefernces-alert";
+import { useRef, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 function ChoosingDistance() {
+  const navigate = useNavigate();
   const [userInputs, setInputs] = useState([]);
+  const userDataTemp = useContext(UserDataContext);
+
 
   const handleChange = (value) => {
     setInputs(value)
+  };
+
+  const handleSaveButton = () => {
+    setInputs(userInputs);
+    saveFunction();
+  };
+
+  const saveFunction = () => {
+    userDataTemp['distance'] = userInputs;
+    console.log(userDataTemp);
   }
 
-  const handleSubmit = () => {
-    console.log((Number(userInputs)))
-  };
+  const handleDoneButton = () => {
+    console.log(userDataTemp)
+    navigate('/route')
+  }
 
   const btnRef = useRef();
 
@@ -33,10 +51,19 @@ function ChoosingDistance() {
       </NumberInput>
       <Button
         ref={btnRef}
+        colorScheme="green"
+        marginTop="4"
+        width="30%"
+        onClick={handleSaveButton}
+      >
+        Save
+      </Button>
+      <Button
+        ref={btnRef}
         colorScheme="teal"
         marginTop="4"
-        width="60%"
-        onClick={handleSubmit}
+        width="30%"
+        onClick={handleDoneButton}
       >
         Done
       </Button>

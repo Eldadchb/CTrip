@@ -31,10 +31,10 @@ function ChoosingResturants() {
   };
 
   const saveFunction = () => {
-    userDataTemp['resturants'] = result;
+    userDataTemp['keyword'] = Array.from(result)
     console.log(userDataTemp);
-  }
-
+  };
+  
   const resturantType = [
     "Asian",
     "Israeli",

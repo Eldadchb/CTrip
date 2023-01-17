@@ -17,10 +17,10 @@ function App() {
     libraries: ["places"],
   });
   const USER_DATA_OBJ = {
-    'startingPoint': false,
-    'resturants': false,
-    'attractions': false,
-    'distance': false
+    'location': false,
+    'radius': false,
+    'type': false,
+    'keyword': false
   };
 
   if (!isLoaded) return <Spinner size={"xl"} />;

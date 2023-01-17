@@ -32,16 +32,16 @@ function ChoosingAttractions() {
   };
 
   const saveFunction = () => {
-    userDataTemp['attractions'] = result;
+    userDataTemp['type'] = Array.from(result)
     console.log(userDataTemp);
   }
 
   const attractionsType = [
     "Church",
     "Clothing store",
-    "Shopping mall",
+    "Shoppingmall",
     "Synagogue",
-    "Super market",
+    "Supermarket",
     "Jewelry store",
     "Zoo",
     "Mosque",
@@ -121,7 +121,7 @@ function ChoosingAttractions() {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader justifyContent="center" display="flex">
-            Distance
+            Distance (KM)
           </DrawerHeader>
 
           <DrawerBody>

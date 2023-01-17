@@ -8,9 +8,9 @@ import {
 } from "@chakra-ui/react";
 
 import UserDataContext from "../usersData/userContext";
-import ConfirmAlert from "./confirm-prefernces-alert";
 import { useRef, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchPlaces } from "../services";
 
 function ChoosingDistance() {
   const navigate = useNavigate();
@@ -28,13 +28,14 @@ function ChoosingDistance() {
   };
 
   const saveFunction = () => {
-    userDataTemp['distance'] = userInputs;
+    userDataTemp['radius'] = userInputs;
     console.log(userDataTemp);
   }
 
-  const handleDoneButton = () => {
-    console.log(userDataTemp)
-    navigate('/route')
+  const handleDoneButton = async () => {
+    const route = await fetchPlaces(userDataTemp)
+    userDataTemp['route'] = route;
+    navigate('/route') //TODO FIX
   }
 
   const btnRef = useRef();

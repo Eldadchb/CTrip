@@ -1,7 +1,5 @@
-import { useColorMode, Button, Box, Divider } from "@chakra-ui/react";
+import { useColorMode, Button, Box } from "@chakra-ui/react";
 import { SunIcon, MoonIcon } from "@chakra-ui/icons";
-import { useState } from "react";
-import AutoComplete from "./auto-complete-bar";
 
 function NavBar() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -21,7 +19,6 @@ function NavBar() {
         >
           CTrip
         </Box>
-
         <Box
           className="theme-mode-button"
           width="50%"

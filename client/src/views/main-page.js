@@ -1,6 +1,4 @@
 import Map from "../components/map";
-import NavBar from "../components/nav-bar";
-import { Divider } from "@chakra-ui/react";
 
 function MainPage() {
   return (

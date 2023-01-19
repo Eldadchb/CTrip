@@ -7,7 +7,6 @@ import { Route, Routes } from 'react-router-dom';
 import { ChakraProvider, Divider } from "@chakra-ui/react";
 import theme from './styles/theme'
 import NavBar from "./components/nav-bar";
-import RoutePage from "./views/route-page";
 import UserDataContext from "./usersData/userContext";
 
 
@@ -20,7 +19,7 @@ function App() {
     'location': false,
     'radius': false,
     'type': false,
-    'keyword': false
+    'keyword': false,
   };
 
   if (!isLoaded) return <Spinner size={"xl"} />;
@@ -33,13 +32,11 @@ function App() {
           <Divider borderWidth="1%" />
           <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/route" element={<RoutePage />} />
           </Routes>
         </UserDataContext.Provider>
       </ChakraProvider>
-
     </>
   );
-}
+};
 
 export default App;

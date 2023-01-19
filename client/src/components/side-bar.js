@@ -10,15 +10,14 @@ import {
   Stack,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import SavedTrips from "./saved-trips";
 import CreateNewTripMenu from "./create-new-trip-menu";
 
-function SideBar() {
+function SideBar({ setRoute }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
-
 
   return (
     <Box className="side-bar">
@@ -39,7 +38,7 @@ function SideBar() {
 
           <DrawerBody>
             <Stack direction="column" spacing={10} align="center">
-              <CreateNewTripMenu></CreateNewTripMenu>
+              <CreateNewTripMenu setRoute={setRoute}></CreateNewTripMenu>
 
               <SavedTrips></SavedTrips>
             </Stack>

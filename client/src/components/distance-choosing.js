@@ -9,11 +9,9 @@ import {
 
 import UserDataContext from "../usersData/userContext";
 import { useRef, useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { fetchPlaces } from "../services";
 
-function ChoosingDistance() {
-  const navigate = useNavigate();
+function ChoosingDistance({ setRoute }) {
   const [userInputs, setInputs] = useState([]);
   const userDataTemp = useContext(UserDataContext);
 
@@ -29,14 +27,17 @@ function ChoosingDistance() {
 
   const saveFunction = () => {
     userDataTemp['radius'] = userInputs;
-    console.log(userDataTemp);
-  }
+  };
+
+  const extractSteps = (routeObj) => {
+    const x = routeObj.routes[0].legs[0].steps.map(step => [step.start_location, step.end_location]);
+    return x
+  };
 
   const handleDoneButton = async () => {
     const route = await fetchPlaces(userDataTemp)
-    userDataTemp['route'] = route;
-    navigate('/route') //TODO FIX
-  }
+    setRoute(route);
+  };
 
   const btnRef = useRef();
 

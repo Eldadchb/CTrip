@@ -9,7 +9,7 @@ import {
   Stack,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 function SavedTrips() {
   const { isOpen, onOpen, onClose } = useDisclosure();

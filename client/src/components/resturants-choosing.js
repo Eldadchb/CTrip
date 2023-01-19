@@ -15,7 +15,7 @@ import { useRef, useState, useContext } from "react";
 import ChoosingAttractions from "./attractions-choosing";
 import UserDataContext from "../usersData/userContext";
 
-function ChoosingResturants() {
+function ChoosingResturants({ setRoute }) {
   const [resturants, setResturants] = useState()
 
   const result = new Set();
@@ -32,9 +32,8 @@ function ChoosingResturants() {
 
   const saveFunction = () => {
     userDataTemp['keyword'] = Array.from(result)
-    console.log(userDataTemp);
   };
-  
+
   const resturantType = [
     "Asian",
     "Israeli",
@@ -42,8 +41,7 @@ function ChoosingResturants() {
     "Cafe",
     "Maxican",
     "Persian",
-    "Arabian",
-    "Georgian",
+    "Arabic",
     "Russian",
     "Bakery",
     "Burger",
@@ -123,13 +121,13 @@ function ChoosingResturants() {
 
           <DrawerBody>
             <Stack direction="column" spacing={2} align="center">
-              <ChoosingAttractions></ChoosingAttractions>
+              <ChoosingAttractions setRoute={setRoute}></ChoosingAttractions>
             </Stack>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
     </>
   );
-}
+};
 
 export default ChoosingResturants;

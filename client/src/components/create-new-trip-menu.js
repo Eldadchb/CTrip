@@ -12,10 +12,10 @@ import {
   Stack,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import ChoosingResturants from "./resturants-choosing";
 
-function CreateNewTripMenu() {
+function CreateNewTripMenu({ setRoute }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
 
@@ -46,7 +46,7 @@ function CreateNewTripMenu() {
 
           <DrawerBody>
             <Stack direction="column" spacing={2} align="center">
-              <ChoosingResturants></ChoosingResturants>
+              <ChoosingResturants setRoute={setRoute}></ChoosingResturants>
             </Stack>
           </DrawerBody>
         </DrawerContent>

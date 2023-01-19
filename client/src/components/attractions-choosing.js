@@ -16,11 +16,11 @@ import { useRef, useState, useContext } from "react";
 import UserDataContext from "../usersData/userContext";
 
 
-function ChoosingAttractions() {
+function ChoosingAttractions({ setRoute }) {
   const [attractions, setAttractions] = useState()
 
-  const result = new Set();
   const userDataTemp = useContext(UserDataContext);
+  const result = new Set();
 
   const handleChoosing = (atrrType) => {
     result.add(atrrType);
@@ -33,19 +33,15 @@ function ChoosingAttractions() {
 
   const saveFunction = () => {
     userDataTemp['type'] = Array.from(result)
-    console.log(userDataTemp);
-  }
+  };
 
   const attractionsType = [
     "Church",
-    "Clothing store",
     "Shoppingmall",
     "Synagogue",
     "Supermarket",
-    "Jewelry store",
     "Zoo",
     "Mosque",
-    "Book Store",
     "Museum",
     "Theater",
     "Art gallery",
@@ -110,7 +106,6 @@ function ChoosingAttractions() {
       >
         Next
       </Button>
-
       <Drawer
         isOpen={isOpen}
         placement="left"
@@ -126,7 +121,7 @@ function ChoosingAttractions() {
 
           <DrawerBody>
             <Stack direction="column" spacing={2} align="center">
-              <ChoosingDistance></ChoosingDistance>
+              <ChoosingDistance setRoute={setRoute}></ChoosingDistance>
             </Stack>
           </DrawerBody>
         </DrawerContent>

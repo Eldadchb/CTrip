@@ -1,4 +1,4 @@
-# CTrip
+# CTrip (UNDER CONSTRUCTION!)
 
 <p align="center">
   <img src="images/logo-readme-1.png" />
